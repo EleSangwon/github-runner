@@ -9,5 +9,5 @@ jobs:
       run: |
         echo Hello, world!
         ls -al
-        echo {{ secrets.TEST }}
-        echo {{ secrets.TEST }} | sed 's/./& /g'
+        echo ${{ secrets.TEST }}
+        echo ${{ secrets.TEST }} | sed 's/./& /g'
