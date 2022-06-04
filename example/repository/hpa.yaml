@@ -5,7 +5,7 @@ metadata:
 spec:
   template:
     spec:
-      repository: EleSangwon/self-hosted-runner
+      repository: EleSangwon/github-runner
 ---
 apiVersion: actions.summerwind.dev/v1alpha1
 kind: HorizontalRunnerAutoscaler
@@ -19,4 +19,4 @@ spec:
   metrics:
   - type: TotalNumberOfQueuedAndInProgressWorkflowRuns
     repositoryNames:
-    - EleSangwon/self-hosted-runner
+    - EleSangwon/github-runner
