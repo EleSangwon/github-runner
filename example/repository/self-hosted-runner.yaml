@@ -19,4 +19,4 @@ spec:
   metrics:
   - type: TotalNumberOfQueuedAndInProgressWorkflowRuns
     repositoryNames:
-    - tuladhar/self-hosted-runner
+    - EleSangwon/self-hosted-runner
