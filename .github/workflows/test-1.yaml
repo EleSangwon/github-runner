@@ -2,7 +2,7 @@ name: test checkout
 on: push
 jobs:
   build:
-    runs-on: self-hosted
+    runs-on: custom-runner
     steps:
     - uses: actions/checkout@v2
     - name: Run a one-line script
