@@ -1,0 +1,9 @@
+# runner.yaml
+apiVersion: actions.summerwind.dev/v1alpha1
+kind: Runner
+metadata:
+  name: example-org-runner
+spec:
+  organization: SideProject-2022
+  labels:
+  - custom-label

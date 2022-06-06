@@ -1,0 +1,26 @@
+# runnerdeployment.yaml
+apiVersion: actions.summerwind.dev/v1alpha1
+kind: RunnerDeployment
+metadata:
+  name: example-runnerdeploy-org
+spec:
+  template:
+    spec:
+      organization: SideProject-2022
+      labels:
+        - custom-label
+      env: []
+---
+apiVersion: actions.summerwind.dev/v1alpha1
+kind: HorizontalRunnerAutoscaler
+metadata:
+  name: example-runner-deployment-autoscaler
+spec:
+  scaleTargetRef:
+    name: example-runnerdeploy-org
+    # Uncomment the below in case the target is not RunnerDeployment but RunnerSet
+    #kind: RunnerSet
+  minReplicas: 5
+  maxReplicas: 10
+  metrics:
+  - type: TotalNumberOfQueuedAndInProgressWorkflowRuns
