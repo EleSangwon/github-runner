@@ -36,7 +36,11 @@ kubectl create secret generic controller-manager \
     --from-file=github_app_private_key=${PRIVATE_KEY_FILE_PATH}
 ```
 
-## 5. Result 
+## 5. Runner Group Setting
+![image](https://user-images.githubusercontent.com/50174803/172145562-07ce0735-14ad-4784-831e-31dc77f9f93c.png)
+
+
+## 6. Result 
 
 [ POD ] 
 ![image](https://user-images.githubusercontent.com/50174803/172144718-0b66d007-4429-42c0-bda6-03d42601aaa6.png)
