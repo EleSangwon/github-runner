@@ -1,0 +1,32 @@
+apiVersion: actions.summerwind.dev/v1alpha1
+kind: RunnerDeployment
+metadata:
+  name: runner-deployment
+spec:
+  template:
+    spec:
+      repository: EleSangwon/github-runner-k8s
+      labels:
+        - custom-runner
+      resources:
+        limits:
+          cpu: 1500m
+          memory: 1280Mi
+        requests:
+          cpu: 250m
+          memory: 64Mi
+
+---
+apiVersion: actions.summerwind.dev/v1alpha1
+kind: HorizontalRunnerAutoscaler
+metadata:
+  name: runner-deployment-autoscaler
+spec:
+  scaleTargetRef:
+    name: runner-deployment
+  minReplicas: 1
+  maxReplicas: 5
+  metrics:
+  - type: TotalNumberOfQueuedAndInProgressWorkflowRuns
+    repositoryNames:
+    - EleSangwon/github-runner-k8s
