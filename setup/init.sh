@@ -45,8 +45,8 @@ helm install \
   cert-manager jetstack/cert-manager \
   --namespace cert-manager \
   --create-namespace \
-  --version v1.8.0
-
+  --version v1.8.0 
+  
 echo "========================== Helm ARC =========================="
 sleep 10
 
@@ -56,8 +56,17 @@ helm upgrade --install --namespace actions-runner-system --create-namespace --wa
 echo "========================== Using PAT Authentication =========================="
 # kubectl create secret generic controller-manager -n actions-runner-system --from-literal=github_token=${GITHUB_TOKEN}
 
+
 # 1. Get the application URL by running these commands:
 #   export POD_NAME=$(kubectl get pods --namespace actions-runner-system -l "app.kubernetes.io/name=actions-runner-controller,app.kubernetes.io/instance=actions-runner-controller" -o jsonpath="{.items[0].metadata.name}")
 #   export CONTAINER_PORT=$(kubectl get pod --namespace actions-runner-system $POD_NAME -o jsonpath="{.spec.containers[0].ports[0].containerPort}")
 #   echo "Visit http://127.0.0.1:8080 to use your application"
 #   kubectl --namespace actions-runner-system port-forward $POD_NAME 8080:$CONTAINER_PORT
+
+echo "========================== Using Github APP Authentication =========================="
+# kubectl create secret generic controller-manager \
+#     -n actions-runner-system \
+#     --from-literal=github_app_id=${APP_ID} \
+#     --from-literal=github_app_installation_id=${INSTALLATION_ID} \
+#     --from-file=github_app_private_key=${PRIVATE_KEY_FILE_PATH}
+    
